@@ -2,6 +2,7 @@ package com.raja.reflection.model;
 
 public class Person {
 	
+	
 	public String name;
 	public Integer age;
 	private double salary;
@@ -23,6 +24,11 @@ public class Person {
 	}
 	public void setSalary(double salary) {
 		this.salary = salary;
+	}
+	
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", salary=" + salary + "]";
 	}
 
 }

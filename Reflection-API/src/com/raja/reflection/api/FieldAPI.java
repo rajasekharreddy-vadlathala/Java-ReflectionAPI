@@ -14,6 +14,19 @@ public class FieldAPI {
 
 		//to get class Fields
 		Class<?> cls = Person.class;
+		
+		String personCls = "com.raja.reflection.model.Person";
+		try {
+			Class<?> pCls = Class.forName(personCls);
+			System.out.println("class name is = "+pCls);
+			Method[] methods = pCls.getDeclaredMethods();
+			for(Method method: methods) {
+				System.out.println("Class.forName Method name is= "+method);
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		Class<?> empcls = Employee.class;
 		Field age = cls.getField("age");
 		Field[] fields = cls.getDeclaredFields();
