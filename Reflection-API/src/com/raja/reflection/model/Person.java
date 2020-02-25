@@ -3,6 +3,7 @@ package com.raja.reflection.model;
 public class Person {
 	
 	
+	
 	public String name;
 	public Integer age;
 	private double salary;
@@ -29,6 +30,10 @@ public class Person {
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + ", salary=" + salary + "]";
+	}
+	
+	public static String getPerson() {
+		return "Person";
 	}
 
 }

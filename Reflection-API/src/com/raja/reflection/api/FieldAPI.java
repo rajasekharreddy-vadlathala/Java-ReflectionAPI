@@ -3,6 +3,8 @@ package com.raja.reflection.api;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
 
 import com.raja.reflection.model.Employee;
 import com.raja.reflection.model.Person;
@@ -31,15 +33,20 @@ public class FieldAPI {
 		Field age = cls.getField("age");
 		Field[] fields = cls.getDeclaredFields();
 		
-		for(Field field:fields) {
-			System.out.println("getDeclaredFields Field name is= "+field.getName());
-		}
+		System.out.println("getDeclaredFields Field name is= "+Arrays.toString(fields));
+
+		
+		/*
+		 * for(Field field:fields) {
+		 * System.out.println("getDeclaredFields Field name is= "+field.getName()); }
+		 */
 		
 		Field[] flds = empcls.getFields();
-		
-		for(Field field:flds) {
-			System.out.println("getFields Field name is= "+field.getName());
-		}
+		System.out.println("getFields Field name is= "+Arrays.toString(flds));
+		/*
+		 * for(Field field:flds) {
+		 * System.out.println("getFields Field name is= "+field.getName()); }
+		 */
 		
 		//to get class Methods
 		
@@ -50,6 +57,11 @@ public class FieldAPI {
 		for(Method method: methods) {
 			System.out.println("getDeclaredMethods Method name is= "+method.getName());
 		}
+		
+		System.out.println("Declared static methods");
+		Arrays.stream(methods).filter(m -> Modifier.isStatic(m.getModifiers()))
+		 .forEach(System.out::println);
+		
 		//to get constructors of a class
 		Constructor<?> cons = cls.getConstructor(Person.class);
 		Constructor<?>[] constructors = cls.getConstructors();
